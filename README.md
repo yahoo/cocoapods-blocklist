@@ -33,7 +33,7 @@ The blacklist config file is a JSON file that has an array of pods, each one con
     {
       "name":"BananaKit",
       "reason":"Vulnerable to code injection with malformed BQL queries",
-      "versions": [">=3.4.2", "<3.6.0]"
+      "versions":[">=3.4.2", "<3.6.0"]
     }
   ]
 }
