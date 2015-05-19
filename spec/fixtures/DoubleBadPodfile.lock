@@ -1,0 +1,13 @@
+PODS:
+  - BananaKit (3.4.7)
+  - FooKit (1.2.2)
+
+DEPENDENCIES:
+  - BananaKit (~>3.4.0)
+  - FooKit (~>1.2.0)
+
+SPEC CHECKSUMS:
+  BananaKit: 12148377a117d52b3ab1c61d164b65011d0c3eae
+  FooKit: 21239286b026e43a49c2b70e255a74102cfd2f9f
+
+COCOAPODS: 0.35.0

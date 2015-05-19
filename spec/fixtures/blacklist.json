@@ -1,0 +1,14 @@
+{
+  "pods":[
+    {
+      "name":"FooKit",
+      "reason":"FooKit 1.2.2 did not check passwords on Thursdays",
+      "versions":"1.2.2"
+    },
+    {
+      "name":"BananaKit",
+      "reason":"Vulnerable to code injection with malformed BQL queries",
+      "versions": [">=3.4.2", "<3.6.0"]
+    }
+  ]
+}

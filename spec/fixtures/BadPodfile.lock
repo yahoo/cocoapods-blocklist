@@ -1,0 +1,10 @@
+PODS:
+  - BananaKit (3.4.7)
+
+DEPENDENCIES:
+  - BananaKit (~>3.4.0)
+
+SPEC CHECKSUMS:
+  BananaKit: 12148377a117d52b3ab1c61d164b65011d0c3eae
+
+COCOAPODS: 0.35.0
