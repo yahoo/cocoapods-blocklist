@@ -1,6 +1,6 @@
 # cocoapods-blacklist
 
-[![Build Status](https://img.shields.io/travis/yahoo/cocoapods-blacklist/master.svg?style=flat)](https://travis-ci.org/yahoo/cocoapods-blacklist)
+[![Build Status](https://travis-ci.org/yahoo/cocoapods-blacklist.svg?branch=master)](https://travis-ci.org/yahoo/cocoapods-blacklist)
 
 A CocoaPods plugin used to check a project against a list of pods that you do not want included in your build. Security is the primary use, but keeping specific pods that have conflicting licenses is another possible use.
 
