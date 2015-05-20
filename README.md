@@ -1,5 +1,7 @@
 # cocoapods-blacklist
 
+[![Build Status](https://img.shields.io/travis/yahoo/cocoapods-blacklist/master.svg?style=flat)](https://travis-ci.org/yahoo/cocoapods-blacklist)
+
 A CocoaPods plugin used to check a project against a list of pods that you do not want included in your build. Security is the primary use, but keeping specific pods that have conflicting licenses is another possible use.
 
 We use this in our continuous integration builds. If a security issue is found with a pod, we can update our `blacklist.json` file and builds will start to fail immediately. Developers don't always read the email about a new vulnerability. They definitely notice when the build fails. :smile:
