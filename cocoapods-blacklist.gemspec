@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = CocoapodsBlacklist::VERSION
   spec.authors       = ['David Grandinetti']
   spec.email         = ['dbgrandi@yahoo-inc.com']
-  spec.description   = %q{A short description of cocoapods-blacklist.}
-  spec.summary       = %q{A longer description of cocoapods-blacklist.}
-  spec.homepage      = 'https://github.com/EXAMPLE/cocoapods-blacklist'
+  spec.description   = %q{Blacklist pods from your project.}
+  spec.summary       = %q{A CocoaPods plugin used to check a project against a list of pods that you do not want included in your build. Security is the primary use, but keeping specific pods that have conflicting licenses is another possible use.}
+  spec.homepage      = 'https://github.com/yahoo/cocoapods-blacklist'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
