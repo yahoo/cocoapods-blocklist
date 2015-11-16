@@ -31,20 +31,20 @@ module Pod
 
       def initialize(argv)
         @blacklist = argv.option('config')
-        @warn = argv.flag?('warn') || false
-        @lockfile_name = argv.shift_argument || "./Podfile.lock"
+        @warn = argv.flag?('warn')
+        @lockfile_path = argv.shift_argument
         super
       end
 
       def validate!
         super
-        unless File.exists?(@lockfile_name)
-          help! 'A lockfile and blacklist file are needed.'
-        end
+        
+        @lockfile = @lockfile_path ? Lockfile.from_file(Pathname(@lockfile_path)) : config.lockfile
+        help! 'A lockfile is needed.' unless lockfile
+        help! 'A lockfile is needed.' unless @blacklist
       end
 
       def run
-        lockfile = Pod::Lockfile.from_file(Pathname.new(@lockfile_name))
         open(@blacklist) do |f|
           @blacklist_file = JSON.parse(f.read)
         end
@@ -55,8 +55,8 @@ module Pod
         @blacklist_file['pods'].each do |pod|
           name = pod['name']
           if lockfile.pod_names.include? name
-            version = Pod::Version.new(lockfile.version(name))
-            if Pod::Requirement.create(pod['versions']).satisfied_by?(version)
+            version = Version.new(lockfile.version(name))
+            if Requirement.create(pod['versions']).satisfied_by?(version)
               UI.puts "[!] Validation error: Use of #{name} #{version} for reason: #{pod['reason']}".yellow
               failed_pods[name] = version
               warned = true
@@ -64,7 +64,7 @@ module Pod
           end
         end
         if !warned
-          UI.puts "#{@lockfile_name} passed blacklist validation".green
+          UI.puts "#{UI.path lockfile.defined_in_file} passed blacklist validation".green
         else
           failed_pod_string = failed_pods.map { |name, version| "#{name} (#{version})"}.join(", ")
           unless @warn
@@ -73,6 +73,9 @@ module Pod
         end
       end
       
+      private
+      
+      attr_reader :lockfile
     end
   end
 end
