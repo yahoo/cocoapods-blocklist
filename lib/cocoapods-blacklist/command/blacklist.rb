@@ -13,7 +13,7 @@ module Pod
       self.description = <<-DESC
         Validate a project against a list of banned pods. Requires a lockfile
         and a config file (JSON).
-        
+
         example:
         $ pod blacklist --config blacklist.json
       DESC
@@ -21,7 +21,7 @@ module Pod
       self.arguments = [
         CLAide::Argument.new('LOCKFILE', false),
       ]
-      
+
       def self.options
         [
           ['--config=CONFIG', 'Config file or URL for the blacklist'],
@@ -38,10 +38,10 @@ module Pod
 
       def validate!
         super
-        
+
         @lockfile = @lockfile_path ? Lockfile.from_file(Pathname(@lockfile_path)) : config.lockfile
         help! 'A lockfile is needed.' unless lockfile
-        help! 'A lockfile is needed.' unless @blacklist
+        help! 'A blacklist file is needed.' unless @blacklist
       end
 
       def run
@@ -51,7 +51,7 @@ module Pod
 
         warned = false
         failed_pods = {}
-        
+
         @blacklist_file['pods'].each do |pod|
           name = pod['name']
           if lockfile.pod_names.include? name
@@ -64,7 +64,7 @@ module Pod
           end
         end
         if !warned
-          UI.puts "#{UI.path lockfile.defined_in_file} passed blacklist validation".green
+          UI.puts "#{UI.path lockfile.defined_in_file.expand_path} passed blacklist validation".green
         else
           failed_pod_string = failed_pods.map { |name, version| "#{name} (#{version})"}.join(", ")
           unless @warn
@@ -72,9 +72,9 @@ module Pod
           end
         end
       end
-      
+
       private
-      
+
       attr_reader :lockfile
     end
   end
