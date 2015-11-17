@@ -44,6 +44,7 @@ The blacklist config file is a JSON file that has an array of pods, each one con
 ## Contributors
 
 - David Grandinetti ([@dbgrandi](https://twitter.com/dbgrandi))
+- Samuel E. Giddins ([@segiddins](https://twitter.com/segiddins))
 
 ## License
 

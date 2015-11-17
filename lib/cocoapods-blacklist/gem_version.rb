@@ -3,5 +3,5 @@
 #  Licensed under the terms of the MIT License. See LICENSE file in the project root.
 
 module CocoapodsBlacklist
-  VERSION = "0.1.1"
+  VERSION = "0.1.2"
 end
