@@ -6,6 +6,6 @@ gemspec
 group :development do
   gem 'cocoapods'
   gem 'bacon'
+  gem 'prettybacon'
   gem 'webmock'
 end
-
