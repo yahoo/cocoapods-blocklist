@@ -6,12 +6,12 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (4.2.1)
-      i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
+    activesupport (6.0.3.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
       minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+      zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.3.8)
     bacon (1.2.0)
     claide (0.8.1)
@@ -41,13 +41,14 @@ GEM
       netrc (= 0.7.8)
     cocoapods-try (0.4.3)
     colored (1.2)
+    concurrent-ruby (1.1.6)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     escape (0.0.4)
     fuzzy_match (2.0.4)
-    i18n (0.7.0)
-    json (1.8.2)
-    minitest (5.6.0)
+    i18n (1.8.3)
+      concurrent-ruby (~> 1.0)
+    minitest (5.14.1)
     molinillo (0.2.3)
     nap (0.8.0)
     netrc (0.7.8)
@@ -56,8 +57,8 @@ GEM
       bacon (~> 1.2)
     rake (10.4.2)
     safe_yaml (1.0.4)
-    thread_safe (0.3.5)
-    tzinfo (1.2.2)
+    thread_safe (0.3.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     webmock (1.21.0)
       addressable (>= 2.3.6)
@@ -65,6 +66,7 @@ GEM
     xcodeproj (0.23.1)
       activesupport (>= 3)
       colored (~> 1.2)
+    zeitwerk (2.3.0)
 
 PLATFORMS
   ruby
