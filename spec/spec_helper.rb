@@ -13,6 +13,7 @@ require 'pretty_bacon'
 require 'cocoapods'
 
 require 'webmock'
+WebMock.enable!
 WebMock.disable_net_connect!
 
 require 'cocoapods_plugin'
