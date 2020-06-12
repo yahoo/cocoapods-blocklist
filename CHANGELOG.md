@@ -1,5 +1,8 @@
 ## CHANGELOG
 
+# 0.1.4
+- Rename to cocoapods-blocklist (@dbgrandi 6/11/2020)
+
 # 0.1.3
  - Mark current gem name as deprecated with a post_install message (@dbgrandi 6/11/2020)
 

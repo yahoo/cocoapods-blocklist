@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cocoapods-blacklist (0.1.3)
+    cocoapods-blocklist (0.1.4)
 
 GEM
   remote: https://rubygems.org/
@@ -108,7 +108,7 @@ DEPENDENCIES
   bacon
   bundler (~> 1.3)
   cocoapods (~> 1.9.0)
-  cocoapods-blacklist!
+  cocoapods-blocklist!
   prettybacon
   rake (>= 12.3.3)
   webmock
