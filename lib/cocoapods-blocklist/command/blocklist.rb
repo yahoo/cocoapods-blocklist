@@ -7,15 +7,15 @@ require 'open-uri'
 
 module Pod
   class Command
-    class Blacklist < Command
-      self.summary = 'Validate a project against a list of banned pods.'
+    class Blocklist < Command
+      self.summary = 'Validate a project against a list of blocked pods.'
 
       self.description = <<-DESC
-        Validate a project against a list of banned pods. Requires a lockfile
+        Validate a project against a list of blocked pods. Requires a lockfile
         and a config file (JSON).
 
         example:
-        $ pod blacklist --config blacklist.json
+        $ pod blocklist --config blocklist.json
       DESC
 
       self.arguments = [
@@ -24,13 +24,13 @@ module Pod
 
       def self.options
         [
-          ['--config=CONFIG', 'Config file or URL for the blacklist'],
-          ['--warn', 'Only warn about use of banned pods'],
+          ['--config=CONFIG', 'Config file or URL for the blocklist'],
+          ['--warn', 'Only warn about use of blocked pods'],
         ].concat(super)
       end
 
       def initialize(argv)
-        @blacklist = argv.option('config')
+        @blocklist = argv.option('config')
         @warn = argv.flag?('warn')
         @lockfile_path = argv.shift_argument
         super
@@ -41,18 +41,18 @@ module Pod
 
         @lockfile = @lockfile_path ? Lockfile.from_file(Pathname(@lockfile_path)) : config.lockfile
         help! 'A lockfile is needed.' unless lockfile
-        help! 'A blacklist file is needed.' unless @blacklist
+        help! 'A blocklist file is needed.' unless @blocklist
       end
 
       def run
-        open(@blacklist) do |f|
-          @blacklist_file = JSON.parse(f.read)
+        open(@blocklist) do |f|
+          @blocklist_file = JSON.parse(f.read)
         end
 
         warned = false
         failed_pods = {}
 
-        @blacklist_file['pods'].each do |pod|
+        @blocklist_file['pods'].each do |pod|
           name = pod['name']
           if lockfile.pod_names.include? name
             version = Version.new(lockfile.version(name))
@@ -64,11 +64,11 @@ module Pod
           end
         end
         if !warned
-          UI.puts "#{UI.path lockfile.defined_in_file.expand_path} passed blacklist validation".green
+          UI.puts "#{UI.path lockfile.defined_in_file.expand_path} passed blocklist validation".green
         else
           failed_pod_string = failed_pods.map { |name, version| "#{name} (#{version})"}.join(", ")
           unless @warn
-            raise Informative.new("Failed blacklist validation due to use of #{failed_pod_string}")
+            raise Informative.new("Failed blocklist validation due to use of #{failed_pod_string}")
           end
         end
       end
